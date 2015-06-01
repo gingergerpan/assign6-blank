@@ -32,13 +32,14 @@
         // 提示 1 : 挑選符合條件的使用者
         //         可參考https://parse.com/docs/js/guide#queries-query-constraints
       var User = Parse.Object.extend("User");
-
       var query = new Parse.Query(User);
       query.equalTo("attendance", true);
       query.equalTo("role"      , "student");
       query.find({
         success: function(results) {
+          console.log(results);
           alert("共有 " + results.length + " 名學生簽到");
+
         // 提示 2 : 可使用 jqeury 中的 append 方法將資料顯示在<table id="table">中
           for (var i = 0; i < results.length; i++) {
             var object = results[i];
